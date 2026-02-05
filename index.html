@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LED Steuerung</title>
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#0b1220;
+      font-family:system-ui,Arial,sans-serif;
+      color:#e5e7eb;
+    }
+    .box{
+      background:#0f1b2d;
+      border:1px solid #24344d;
+      border-radius:16px;
+      padding:24px;
+      width:260px;
+      text-align:center;
+    }
+    h1{
+      font-size:18px;
+      margin-bottom:20px;
+    }
+    button{
+      width:100%;
+      font-size:18px;
+      font-weight:800;
+      padding:14px;
+      margin:10px 0;
+      border:0;
+      border-radius:12px;
+      cursor:pointer;
+      touch-action:manipulation;
+    }
+    .on{ background:#22c55e; color:#052e16; }
+    .off{ background:#ef4444; color:#450a0a; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>NodeMCU LED</h1>
+
+    <button class="on" onclick="ledOn()">LED EIN</button>
+    <button class="off" onclick="ledOff()">LED AUS</button>
+  </div>
+
+<script>
+  const BASE_URL = "http://192.168.68.54";
+
+  function ledOn(){
+    fetch(BASE_URL + "/on", { mode: "no-cors" });
+  }
+
+  function ledOff(){
+    fetch(BASE_URL + "/off", { mode: "no-cors" });
+  }
+</script>
+</body>
+</html>
